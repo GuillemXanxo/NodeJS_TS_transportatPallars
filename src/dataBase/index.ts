@@ -4,8 +4,8 @@ import Debug from "debug";
 
 const debug = Debug("pallars: connectDB");
 
-const connectDB = (connectionString) =>
-  new Promise((resolve, reject) => {
+const connectDB = (connectionString: string | undefined) =>
+  new Promise<void>((resolve, reject) => {
     mongoose.set("returnOriginal", false);
     mongoose.set("toJSON", {
       virtuals: true,
@@ -16,8 +16,10 @@ const connectDB = (connectionString) =>
         delete ret.__v;
       },
     });
-    mongoose.connect(connectionString, (error) => {
+    mongoose.connect(connectionString!, (error) => {
       if (error) {
+        debug(chalk.red("Connection refused!"));
+        debug(chalk.red(error.message));
         reject(error);
         return;
       }
@@ -25,4 +27,5 @@ const connectDB = (connectionString) =>
       resolve();
     });
   });
-module.exports = connectDB;
+
+export default connectDB;

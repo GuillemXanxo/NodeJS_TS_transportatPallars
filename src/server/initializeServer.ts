@@ -3,7 +3,7 @@ import Debug from "debug";
 
 const debug = Debug("pallars: initializeServer");
 
- export default const initializeServer: Function = async (port: string | number, app) =>
+const initializeServer: Function = async (port: string | number, app: any) =>
   new Promise((resolve, reject) => {
     const server: any = app.listen(port, () => {
       debug(chalk.greenBright(`Server listening on http://localhost:${port}`));
@@ -22,4 +22,4 @@ const debug = Debug("pallars: initializeServer");
     });
   });
 
-
+export default initializeServer;
