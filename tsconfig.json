@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2015", "DOM"],
+    "outDir": "./dist",
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "target": "es6",
+    "types": ["jest"],
+    "noImplicitAny": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts", ".eslintrc.js"],
+  "exclude": ["node_modules", "./dist"]
+}
